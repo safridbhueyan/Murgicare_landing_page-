@@ -14,7 +14,9 @@ import Download from './components/Download';
 import Footer from './components/Footer';
 
 function App() {
-  const [isSubscribed, setIsSubscribed] = useState(false);
+  const [isSubscribed, setIsSubscribed] = useState(() => {
+    return localStorage.getItem('murgicare_is_subscribed') === 'true';
+  });
 
   const scrollToSection = (id) => {
     const element = document.getElementById(id);
