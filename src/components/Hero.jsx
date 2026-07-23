@@ -6,8 +6,20 @@ import { Download, Sparkles, Shield, ArrowRight } from 'lucide-react';
 export default function Hero({ scrollToSection }) {
   return (
     <section id="home" className="hero">
+      {/* Animated Particles */}
+      <div className="hero-particle hero-particle-1"></div>
+      <div className="hero-particle hero-particle-2"></div>
+      <div className="hero-particle hero-particle-3"></div>
+      <div className="hero-particle hero-particle-4"></div>
+      <div className="hero-particle hero-particle-5"></div>
+      <div className="hero-particle hero-particle-6"></div>
+      <div className="hero-particle hero-particle-7"></div>
+      <div className="hero-particle hero-particle-8"></div>
+
+      {/* Decorative Blurred Circles */}
       <div className="deco-circle deco-circle-1"></div>
       <div className="deco-circle deco-circle-2"></div>
+
       <div className="container">
         <div className="grid-2">
           <div className="hero-content animate-fade-in">
@@ -28,6 +40,26 @@ export default function Hero({ scrollToSection }) {
               <button onClick={() => scrollToSection('about')} className="btn btn-secondary">
                 Learn More <ArrowRight size={18} />
               </button>
+            </div>
+
+            {/* Hero Stats Row */}
+            <div className="hero-stats-row">
+              <div className="hero-stat">
+                <span className="hero-stat-number">95%+</span>
+                <span className="hero-stat-label">Accuracy</span>
+              </div>
+              <div className="hero-stat">
+                <span className="hero-stat-number">2 Sec</span>
+                <span className="hero-stat-label">Diagnosis</span>
+              </div>
+              <div className="hero-stat">
+                <span className="hero-stat-number">10k+</span>
+                <span className="hero-stat-label">Farmers</span>
+              </div>
+              <div className="hero-stat">
+                <span className="hero-stat-number">8+</span>
+                <span className="hero-stat-label">Diseases</span>
+              </div>
             </div>
           </div>
 

@@ -1,7 +1,10 @@
 import React from 'react';
+import useScrollReveal from '../hooks/useScrollReveal';
 import { Camera, Cpu, CheckCircle } from 'lucide-react';
 
 export default function HowItWorks() {
+  const ref = useScrollReveal();
+
   const steps = [
     {
       num: "01",
@@ -26,25 +29,27 @@ export default function HowItWorks() {
   return (
     <section id="how-it-works" className="section-padding how-it-works">
       <div className="container">
-        <div className="section-header">
-          <span className="section-tag">Easy Process</span>
-          <h2 className="section-title">How It Works</h2>
-          <p className="section-description">
-            Diagnosing chicken issues is as simple as clicking a photo. Follow these three simple steps to secure your poultry flock.
-          </p>
-        </div>
+        <div ref={ref} className="scroll-reveal">
+          <div className="section-header" data-reveal-child>
+            <span className="section-tag">Easy Process</span>
+            <h2 className="section-title">How It Works</h2>
+            <p className="section-description">
+              Diagnosing chicken issues is as simple as clicking a photo. Follow these three simple steps to secure your poultry flock.
+            </p>
+          </div>
 
-        <div className="timeline">
-          {steps.map((step, idx) => (
-            <div key={idx} className="timeline-step">
-              <div className="step-num-container">
-                <span className="step-number">{step.num}</span>
-                {step.icon}
+          <div className="timeline">
+            {steps.map((step, idx) => (
+              <div key={idx} className="timeline-step" data-reveal-child>
+                <div className="step-num-container">
+                  <span className="step-number">{step.num}</span>
+                  {step.icon}
+                </div>
+                <h3 className="step-title">{step.title}</h3>
+                <p className="step-desc">{step.desc}</p>
               </div>
-              <h3 className="step-title">{step.title}</h3>
-              <p className="step-desc">{step.desc}</p>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </section>

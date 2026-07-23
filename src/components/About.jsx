@@ -1,28 +1,31 @@
 import React from 'react';
+import useScrollReveal from '../hooks/useScrollReveal';
 import chickenCare from '../assets/chicken-care.png';
 
 export default function About() {
+  const ref = useScrollReveal();
+
   return (
     <section id="about" className="section-padding about">
       <div className="container">
-        <div className="grid-2">
-          <div className="about-image-container">
+        <div ref={ref} className="grid-2 scroll-reveal">
+          <div className="about-image-container" data-reveal-child>
             <img src={chickenCare} className="about-image" alt="Poultry Doctor Care Illustration" />
           </div>
 
           <div className="about-content">
-            <span className="section-tag">About MurgiCare</span>
-            <h2 className="section-title" style={{ fontSize: '2.25rem', marginBottom: '20px' }}>
+            <span className="section-tag" data-reveal-child>About MurgiCare</span>
+            <h2 className="section-title" style={{ fontSize: '2.25rem', marginBottom: '20px' }} data-reveal-child>
               Smarter Poultry Health Management
             </h2>
-            <p className="about-p">
+            <p className="about-p" data-reveal-child>
               MurgiCare is an AI-powered poultry health assistant designed to help farmers quickly identify common chicken diseases. By analyzing images of chicken droppings, feet, or facial lesions, the app provides possible disease predictions along with symptoms, prevention methods, and treatment recommendations to support better poultry management.
             </p>
-            <p className="about-p" style={{ fontSize: '0.95rem', color: 'var(--text-light)' }}>
+            <p className="about-p" style={{ fontSize: '0.95rem', color: 'var(--text-light)' }} data-reveal-child>
               Built by poultry experts and machine learning researchers, MurgiCare bridges the gap between rural farmers and expert veterinary knowledge. It works instantly, reducing disease spreading rates and improving overall flock survivability.
             </p>
 
-            <div className="about-stats">
+            <div className="about-stats" data-reveal-child>
               <div className="stat-item">
                 <span className="stat-num">95%+</span>
                 <span className="stat-lbl">Detection Accuracy</span>

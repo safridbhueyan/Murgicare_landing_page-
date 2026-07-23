@@ -1,7 +1,10 @@
 import React from 'react';
+import useScrollReveal from '../hooks/useScrollReveal';
 import { Shield, ShieldAlert, Sparkles, HeartPulse, Stethoscope, AlertTriangle, Eye, Activity } from 'lucide-react';
 
 export default function Diseases() {
+  const ref = useScrollReveal();
+
   const list = [
     {
       icon: <AlertTriangle size={22} />,
@@ -56,29 +59,32 @@ export default function Diseases() {
   return (
     <section id="diseases" className="section-padding diseases-section">
       <div className="container">
-        <div className="section-header">
-          <span className="section-tag">Flock Diagnostics</span>
-          <h2 className="section-title">Diseases We Help Detect</h2>
-          <p className="section-description">
-            Our AI model is trained on thousands of clinical poultry images to identify common infectious diseases, lesions, and symptoms with high accuracy.
-          </p>
-        </div>
+        <div ref={ref} className="scroll-reveal">
+          <div className="section-header" data-reveal-child>
+            <span className="section-tag">Flock Diagnostics</span>
+            <h2 className="section-title">Diseases We Help Detect</h2>
+            <p className="section-description">
+              Our AI model is trained on thousands of clinical poultry images to identify common infectious diseases, lesions, and symptoms with high accuracy.
+            </p>
+          </div>
 
-        <div className="grid-4 diseases-grid">
-          {list.map((item, idx) => (
-            <div
-              key={idx}
-              className={`card disease-card ${item.type === 'healthy' ? 'healthy' : ''}`}
-            >
-              <div className="disease-header">
-                <div className="disease-icon-container">
-                  {item.icon}
+          <div className="grid-4 diseases-grid">
+            {list.map((item, idx) => (
+              <div
+                key={idx}
+                className={`card disease-card ${item.type === 'healthy' ? 'healthy' : ''}`}
+                data-reveal-child
+              >
+                <div className="disease-header">
+                  <div className="disease-icon-container">
+                    {item.icon}
+                  </div>
+                  <h3 className="disease-title">{item.title}</h3>
                 </div>
-                <h3 className="disease-title">{item.title}</h3>
+                <p className="disease-desc">{item.desc}</p>
               </div>
-              <p className="disease-desc">{item.desc}</p>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </section>

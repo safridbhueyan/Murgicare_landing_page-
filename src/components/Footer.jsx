@@ -1,6 +1,6 @@
 import React from 'react';
 import logo from '../assets/logo.png';
-import { Mail, PhoneCall, Globe } from 'lucide-react';
+import { Mail, PhoneCall, Globe, Linkedin, ExternalLink } from 'lucide-react';
 
 export default function Footer({ scrollToSection }) {
   const handleLinkClick = (e, id) => {
@@ -21,17 +21,27 @@ export default function Footer({ scrollToSection }) {
               AI-powered poultry health diagnostics helping farmers detect chicken diseases in seconds. Restoring farm profitability through technology.
             </p>
             <div className="footer-socials">
-              <a href="#facebook" className="social-icon" aria-label="Facebook">
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
-                </svg>
+              <a
+                href="https://www.linkedin.com/in/safridbhueyan"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="social-icon linkedin"
+                aria-label="LinkedIn"
+              >
+                <Linkedin size={16} />
               </a>
-              <a href="#twitter" className="social-icon" aria-label="Twitter">
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path>
-                </svg>
+              <a
+                href="https://portfolionew-lime-phi.vercel.app"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="social-icon portfolio"
+                aria-label="Portfolio"
+              >
+                <Globe size={16} />
               </a>
-              <a href="mailto:safridbhueyan@gmail.com" className="social-icon" aria-label="Email"><Mail size={16} /></a>
+              <a href="mailto:safridbhueyan@gmail.com" className="social-icon email" aria-label="Email">
+                <Mail size={16} />
+              </a>
             </div>
           </div>
 
@@ -67,26 +77,35 @@ export default function Footer({ scrollToSection }) {
 
           <div>
             <h4 className="footer-title">Contact & Support</h4>
-            <ul className="footer-links" style={{ fontSize: '0.88rem' }}>
-              <li style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
-                <PhoneCall size={16} style={{ color: 'var(--primary-teal)' }} />
-                <span>+880 1700-000000</span>
-              </li>
-              <li style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
-                <Mail size={16} style={{ color: 'var(--primary-teal)' }} />
-                <span>safridbhueyan@gmail.com</span>
-              </li>
-              <li style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <Globe size={16} style={{ color: 'var(--primary-teal)' }} />
-                <span>www.murgicare.com</span>
-              </li>
-            </ul>
+            <div className="footer-contact-item">
+              <PhoneCall size={16} />
+              <a href="tel:+8801575115194">+880 1575-115194</a>
+            </div>
+            <div className="footer-contact-item">
+              <Mail size={16} />
+              <a href="mailto:safridbhueyan@gmail.com">safridbhueyan@gmail.com</a>
+            </div>
+            <div className="footer-contact-item">
+              <Linkedin size={16} />
+              <a href="https://www.linkedin.com/in/safridbhueyan" target="_blank" rel="noopener noreferrer">
+                LinkedIn Profile
+              </a>
+            </div>
+            <div className="footer-contact-item">
+              <ExternalLink size={16} />
+              <a href="https://portfolionew-lime-phi.vercel.app" target="_blank" rel="noopener noreferrer">
+                Portfolio Website
+              </a>
+            </div>
           </div>
         </div>
 
         <div className="footer-bottom">
           <div>
-            Copyright © {new Date().getFullYear()} <strong>MurgiCare</strong>. Created by <strong>Safrid Bhueyan</strong>.
+            Copyright © {new Date().getFullYear()} <strong>MurgiCare</strong>. Created by{' '}
+            <a href="https://portfolionew-lime-phi.vercel.app" target="_blank" rel="noopener noreferrer">
+              <strong>Safrid Bhueyan</strong>
+            </a>.
           </div>
           <div className="footer-bottom-links">
             <a href="#privacy" onClick={(e) => { e.preventDefault(); alert('Privacy Policy (Simulated)'); }}>Privacy Policy</a>

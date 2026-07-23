@@ -1,7 +1,10 @@
 import React from 'react';
+import useScrollReveal from '../hooks/useScrollReveal';
 import { ShieldCheck, Zap, HeartHandshake, Award, Globe, Lock } from 'lucide-react';
 
 export default function FeaturesStrip() {
+  const ref = useScrollReveal({ threshold: 0.3 });
+
   const badges = [
     { icon: <ShieldCheck size={20} />, label: "AI Disease Detection" },
     { icon: <Zap size={20} />, label: "Instant Results" },
@@ -13,9 +16,9 @@ export default function FeaturesStrip() {
 
   return (
     <section className="features-strip">
-      <div className="container features-strip-container">
+      <div ref={ref} className="container features-strip-container scroll-reveal">
         {badges.map((badge, idx) => (
-          <div key={idx} className="strip-item">
+          <div key={idx} className="strip-item" data-reveal-child>
             {badge.icon}
             <span>{badge.label}</span>
           </div>
