@@ -2,8 +2,10 @@ import React from 'react';
 import appReportLight from '../assets/app-report-light.png';
 import logo from '../assets/logo.png';
 import { Download, Sparkles, Shield, ArrowRight } from 'lucide-react';
+import { getDownloadUrl } from '../services/api';
 
-export default function Hero({ scrollToSection }) {
+export default function Hero({ scrollToSection, isSubscribed, onDownloadClick }) {
+  const downloadUrl = getDownloadUrl();
   return (
     <section id="home" className="hero">
       {/* Animated Particles */}
@@ -34,9 +36,15 @@ export default function Hero({ scrollToSection }) {
               Detect common poultry diseases in seconds using artificial intelligence. Simply scan chicken droppings, feet, or facial lesions to receive disease predictions, symptoms, prevention tips, and treatment guidance.
             </p>
             <div className="hero-ctas">
-              <button onClick={() => scrollToSection('download')} className="btn btn-primary">
-                <Download size={18} /> Download App
-              </button>
+              {isSubscribed ? (
+                <a href={downloadUrl} download="murgicare.apk" target="_blank" rel="noopener noreferrer" className="btn btn-primary" style={{ textDecoration: 'none' }}>
+                  <Download size={18} /> Download App
+                </a>
+              ) : (
+                <button onClick={onDownloadClick} className="btn btn-primary">
+                  <Download size={18} /> Download App
+                </button>
+              )}
               <button onClick={() => scrollToSection('about')} className="btn btn-secondary">
                 Learn More <ArrowRight size={18} />
               </button>

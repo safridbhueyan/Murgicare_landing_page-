@@ -12,6 +12,7 @@ import WhyChoose from './components/WhyChoose';
 import Disclaimer from './components/Disclaimer';
 import Download from './components/Download';
 import Footer from './components/Footer';
+import DownloadModal from './components/DownloadModal';
 
 function ScrollProgressBar() {
   const [progress, setProgress] = useState(0);
@@ -34,6 +35,7 @@ function App() {
   const [isSubscribed, setIsSubscribed] = useState(() => {
     return localStorage.getItem('murgicare_is_subscribed') === 'true';
   });
+  const [isDownloadModalOpen, setIsDownloadModalOpen] = useState(false);
 
   const scrollToSection = (id) => {
     const element = document.getElementById(id);
@@ -51,11 +53,28 @@ function App() {
     }
   };
 
+  const handleDownloadDirect = () => {
+    const link = document.createElement('a');
+    link.href = '/murgicare.apk';
+    link.setAttribute('download', 'murgicare.apk');
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
+  const handleDownloadTrigger = () => {
+    if (isSubscribed) {
+      handleDownloadDirect();
+    } else {
+      setIsDownloadModalOpen(true);
+    }
+  };
+
   return (
     <div className="app">
       <ScrollProgressBar />
       <Header isSubscribed={isSubscribed} scrollToSection={scrollToSection} />
-      <Hero scrollToSection={scrollToSection} />
+      <Hero scrollToSection={scrollToSection} isSubscribed={isSubscribed} onDownloadClick={handleDownloadTrigger} />
       <FeaturesStrip />
       <SubscriptionForm isSubscribed={isSubscribed} setIsSubscribed={setIsSubscribed} />
       <About />
@@ -65,8 +84,15 @@ function App() {
       <KeyFeatures />
       <WhyChoose />
       <Disclaimer />
-      <Download />
+      <Download isSubscribed={isSubscribed} onDownloadClick={handleDownloadTrigger} />
       <Footer scrollToSection={scrollToSection} />
+
+      <DownloadModal
+        isOpen={isDownloadModalOpen}
+        onClose={() => setIsDownloadModalOpen(false)}
+        onSubscribeClick={() => scrollToSection('subscribe')}
+        onDownloadDirect={handleDownloadDirect}
+      />
     </div>
   );
 }

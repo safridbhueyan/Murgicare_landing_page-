@@ -1,6 +1,14 @@
 import React from 'react';
 import logo from '../assets/logo.png';
-import { Mail, PhoneCall, Globe, Linkedin, ExternalLink } from 'lucide-react';
+import { Mail, PhoneCall, Globe, ExternalLink } from 'lucide-react';
+
+const LinkedInIcon = ({ size = 16 }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+    <rect x="2" y="9" width="4" height="12" />
+    <circle cx="4" cy="4" r="2" />
+  </svg>
+);
 
 export default function Footer({ scrollToSection }) {
   const handleLinkClick = (e, id) => {
@@ -28,7 +36,7 @@ export default function Footer({ scrollToSection }) {
                 className="social-icon linkedin"
                 aria-label="LinkedIn"
               >
-                <Linkedin size={16} />
+                <LinkedInIcon size={16} />
               </a>
               <a
                 href="https://portfolionew-lime-phi.vercel.app"
@@ -86,7 +94,7 @@ export default function Footer({ scrollToSection }) {
               <a href="mailto:safridbhueyan@gmail.com">safridbhueyan@gmail.com</a>
             </div>
             <div className="footer-contact-item">
-              <Linkedin size={16} />
+              <LinkedInIcon size={16} />
               <a href="https://www.linkedin.com/in/safridbhueyan" target="_blank" rel="noopener noreferrer">
                 LinkedIn Profile
               </a>

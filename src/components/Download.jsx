@@ -1,7 +1,9 @@
 import React from 'react';
 import { Play } from 'lucide-react';
+import { getDownloadUrl } from '../services/api';
 
-export default function Download() {
+export default function Download({ isSubscribed, onDownloadClick }) {
+  const downloadUrl = getDownloadUrl();
   return (
     <section id="download" className="section-padding download-section">
       <div className="container">
@@ -12,17 +14,35 @@ export default function Download() {
           </p>
 
           <div className="download-buttons">
-            {/* Google Play Button */}
-            <a href="#playstore" className="download-btn" onClick={(e) => { e.preventDefault(); alert('MurgiCare Android App Download started! (Simulated)'); }}>
-              {/* Custom SVG for Playstore */}
-              <svg viewBox="0 0 512 512" width="24" height="24" fill="currentColor">
-                <path d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6l-58 33.3-60.7-60.7 118.7 27.4c11.1 5.6 11.1 14.4 0 20zM325.3 277.7l60.1 60.1L104.6 499l220.7-221.3z" />
-              </svg>
-              <div>
-                <div className="download-btn-subtitle">Get it on</div>
-                <div className="download-btn-title">Google Play</div>
-              </div>
-            </a>
+            {/* Direct APK / Android Download Button */}
+            {isSubscribed ? (
+              <a
+                href={downloadUrl}
+                download="murgicare.apk"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="download-btn"
+                style={{ textDecoration: 'none' }}
+              >
+                <svg viewBox="0 0 512 512" width="24" height="24" fill="currentColor">
+                  <path d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6l-58 33.3-60.7-60.7 118.7 27.4c11.1 5.6 11.1 14.4 0 20zM325.3 277.7l60.1 60.1L104.6 499l220.7-221.3z" />
+                </svg>
+                <div>
+                  <div className="download-btn-subtitle">Direct APK Download</div>
+                  <div className="download-btn-title">Android App</div>
+                </div>
+              </a>
+            ) : (
+              <button className="download-btn" onClick={onDownloadClick} style={{ border: 'none', cursor: 'pointer' }}>
+                <svg viewBox="0 0 512 512" width="24" height="24" fill="currentColor">
+                  <path d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6l-58 33.3-60.7-60.7 118.7 27.4c11.1 5.6 11.1 14.4 0 20zM325.3 277.7l60.1 60.1L104.6 499l220.7-221.3z" />
+                </svg>
+                <div>
+                  <div className="download-btn-subtitle">Direct APK Download</div>
+                  <div className="download-btn-title">Android App</div>
+                </div>
+              </button>
+            )}
 
             {/* Apple App Store Button */}
             <div className="download-btn disabled">

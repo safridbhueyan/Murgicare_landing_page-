@@ -82,3 +82,17 @@ export async function unsubscribe(userMobile) {
     subscriberId: `tel:${userMobile}`
   });
 }
+
+/**
+ * Returns the download URL for download.php
+ * Directly targets HTTPS server to bypass Vite local proxy buffer issues on large binaries.
+ */
+export function getDownloadUrl() {
+  const origin = typeof window !== 'undefined' ? window.location.origin : '';
+  if (origin.includes('bdappsdigitalapps.com')) {
+    return './download.php';
+  }
+  return 'https://www.bdappsdigitalapps.com/NADB26115/download.php';
+}
+
+

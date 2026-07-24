@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Phone, Lock, CheckCircle2, ShieldCheck, RefreshCw, XCircle, AlertCircle, Award } from 'lucide-react';
-import { sendOtp, verifyOtp, checkSubscription, unsubscribe } from '../services/api';
+import { Phone, Lock, CheckCircle2, ShieldCheck, RefreshCw, XCircle, AlertCircle, Award, Download } from 'lucide-react';
+import { sendOtp, verifyOtp, checkSubscription, unsubscribe, getDownloadUrl } from '../services/api';
 
 export default function SubscriptionForm({ isSubscribed, setIsSubscribed }) {
   const [operator, setOperator] = useState('robi'); // Default Robi
@@ -411,11 +411,23 @@ export default function SubscriptionForm({ isSubscribed, setIsSubscribed }) {
                   </div>
                   <h4 className="success-title">Subscription Active!</h4>
                   <p className="success-desc">
-                    Premium access is unlocked. You can now use all premium features on the MurgiCare platform.
+                    Premium access is unlocked. Download the official MurgiCare Android app to start scanning your poultry.
                   </p>
                   <p style={{ fontSize: '0.85rem', color: 'rgba(255,255,255,0.7)', marginBottom: '16px' }}>
-                    Registered Mobile: <strong>{phoneNumber}</strong>
+                    Registered Mobile: <strong>{phoneNumber || 'Active Account'}</strong>
                   </p>
+
+                  <a
+                    href={getDownloadUrl()}
+                    download="murgicare.apk"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn btn-orange"
+                    style={{ width: '100%', marginBottom: '12px', padding: '14px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', textDecoration: 'none' }}
+                  >
+                    <Download size={20} /> Download MurgiCare App (APK ~47.8MB)
+                  </a>
+
                   <button
                     className="btn btn-secondary"
                     style={{ backgroundColor: 'rgba(255,255,255,0.05)', color: 'white', borderColor: 'rgba(255,255,255,0.2)', width: '100%' }}
